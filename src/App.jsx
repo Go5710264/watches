@@ -1,18 +1,26 @@
+import { useState } from 'react';
 import './App.css'
 import EnteringTimeZone from './components/EnteringTimeZone';
-import TimeItems from './components/TimeItems';
+import WatchList from './components/WatchList';
 
 function App() {
 
+  let [timeZones, setNewZone] = useState([
+    {
+      id: 1,
+      name: "London",
+      zone: +1
+    }
+  ]);
+
   const addNewZone = (event, zone) => {
-    console.log(zone)
+    setNewZone((preZone) => [...preZone, zone]); // возможно нужно добавить event в useState
   }
 
   return (
     <>
       <EnteringTimeZone addNewZone={addNewZone} />
-      <TimeItems/>
-      {/* необоходимо проработать вышележащий компонент - появление циферблата */}
+      <WatchList timeZones={timeZones} />
     </>
   )
 }

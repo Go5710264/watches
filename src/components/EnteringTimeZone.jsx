@@ -5,7 +5,7 @@ const EnteringTimeZone = ({ addNewZone }) => {
     const [zone, setZone] = useState();
 
     const changeTimeZone = (event) => {
-        setZone({...zone, zone: event.target.value})
+        setZone({...zone, zone: +event.target.value})
     }
 
     const changeNameZone = (event) => {
