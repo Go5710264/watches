@@ -1,6 +1,7 @@
 import moment from "moment";
 import { useEffect, useState } from "react";
 import close from '../../public/close.svg'
+import PropTypes from 'prop-types';
 
 const Watch = ({ infoZone }) => {
 
@@ -35,6 +36,10 @@ const Watch = ({ infoZone }) => {
             </section>
         </li>
     )
+}
+
+Watch.propTypes = {
+    infoZone: PropTypes.object
 }
 
 export default Watch;
