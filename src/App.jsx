@@ -14,7 +14,8 @@ function App() {
   ]);
 
   const addNewZone = (event, zone) => {
-    setNewZone((preZone) => [...preZone, zone]); // возможно нужно добавить event в useState
+    setNewZone((preZone) => [...preZone, zone]); 
+    // возможно нужно добавить event в useState
   }
 
   return (

@@ -1,37 +1,37 @@
 import moment from "moment";
 import { useEffect, useState } from "react";
+import close from '../../public/close.svg'
 
 const Watch = ({ infoZone }) => {
 
-    // const desiredTimeZone = 
-    //     moment.utc()
-    //         .clone()
-    //         .add(infoZone.zone, 'hours') // moment().zone()...
+    let [desiredTimeZone, setDesiredTimeZone] = useState(
+        Number(moment.utc().clone().add(infoZone.zone, 'hours').format('X'))
+    )
 
-    const [desiredTimeZone, setDesiredTimeZone] = useState(moment.utc().clone().add(infoZone.zone, 'hours'))
-
-    console.log(desiredTimeZone)
     useEffect(() => {
-        let idInterval = setInterval(() => Number(desiredTimeZone.format('X')) + 1, 1000)
+        let idInterval = setInterval(() => {
+            setDesiredTimeZone(++desiredTimeZone);
+        }, 1000)
 
         return () => {
             clearInterval(idInterval)
         }
-    }, [desiredTimeZone])
+    }, [])
 
-    
-    // console.log(desiredTimeZone.format('X'))
-
-    // const hours = desiredTimeZone.format('H'),
-    //     minutes = desiredTimeZone.format('m'),
-    //     seconds = desiredTimeZone.format('s');
+// Временная зона отсчитывается от текущего времени
 
     return (
-        <li>
-            <section>
-                <h3>{infoZone.name}</h3>
-                {/* <time>{desiredTimeZone.format('HH:mm:ss')}</time> */}
-                <time>{desiredTimeZone.format('HH:mm:ss')}</time>
+        <li className="cell-with-time">
+            <section className="time-info">
+                <div>
+                    <h3 className="time-name">{infoZone.name}</h3>
+                    <time>{moment.unix(desiredTimeZone).format('HH:mm:ss')}</time>
+                </div>
+                <img 
+                    src={close}
+                    className="icon"
+                />
+                {/* <time>{String(desiredTimeZone)}</time> */}
             </section>
         </li>
     )

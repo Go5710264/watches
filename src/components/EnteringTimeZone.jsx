@@ -31,17 +31,14 @@ const EnteringTimeZone = ({ addNewZone }) => {
                 <div className="form-data">
                     
                     <label 
-                        // htmlFor="input-name-zone" 
                         className="header-name-zone"
                     >Название</label>
 
                     <input 
-                        // id="input-name-zone"
                         className="input-name-zone"
                         type="text"
                         onChange={() => changeNameZone(event)} 
                         placeholder='Лондон'
-                        // name="input-name-zone" 
                     />
 
                 </div>
@@ -49,7 +46,6 @@ const EnteringTimeZone = ({ addNewZone }) => {
                 <div className="form-data">
                     
                     <label 
-                        // htmlFor="distance" 
                         className="header-time-zone"
                     >Временная зона</label>
 
@@ -58,7 +54,6 @@ const EnteringTimeZone = ({ addNewZone }) => {
                         type="text" 
                         onChange={() => changeTimeZone(event)}
                         placeholder='+1'
-                        // name="distance" 
                     />
 
                 </div>
