@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import close from '../../public/close.svg'
 import PropTypes from 'prop-types';
 
-const Watch = ({ infoZone }) => {
+const Watch = ({ infoZone, removeElement }) => {
 
     let [desiredTimeZone, setDesiredTimeZone] = useState(
         Number(moment.utc().clone().add(infoZone.zone, 'hours').format('X'))
@@ -17,7 +17,7 @@ const Watch = ({ infoZone }) => {
         return () => {
             clearInterval(idInterval)
         }
-    }, [])
+    })
 
 // Временная зона отсчитывается от текущего времени
 
@@ -31,15 +31,16 @@ const Watch = ({ infoZone }) => {
                 <img 
                     src={close}
                     className="icon"
+                    onClick={() => removeElement(infoZone.id)}
                 />
-                {/* <time>{String(desiredTimeZone)}</time> */}
             </section>
         </li>
     )
 }
 
 Watch.propTypes = {
-    infoZone: PropTypes.object
+    infoZone: PropTypes.object,
+    removeElement: PropTypes.func
 }
 
 export default Watch;

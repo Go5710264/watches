@@ -21,7 +21,7 @@ function App() {
   return (
     <>
       <EnteringTimeZone addNewZone={addNewZone} />
-      <WatchList timeZones={timeZones} />
+      <WatchList timeZones={timeZones} setNewZone={setNewZone}/>
     </>
   )
 }
